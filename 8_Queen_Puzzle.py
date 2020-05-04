@@ -18,5 +18,5 @@ def no_conflict(new_row, new_column, solution):
                for row in range(new_row))
 
 
-for solution in queenspuzzle(8, 8):
+for solution in queensproblem(8, 8):
     print(solution)
