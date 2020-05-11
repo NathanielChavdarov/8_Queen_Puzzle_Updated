@@ -1,22 +1,46 @@
+table = [[0, 0, 0, 0, 0, 0, 0, 0],
+         [0, 0, 0, 0, 0, 0, 0, 0],
+         [0, 0, 0, 0, 0, 0, 0, 0],
+         [0, 0, 0, 0, 0, 0, 0, 0],
+         [0, 0, 0, 0, 0, 0, 0, 0],
+         [0, 0, 0, 0, 0, 0, 0, 0],
+         [0, 0, 0, 0, 0, 0, 0, 0],
+         [0, 0, 0, 0, 0, 0, 0, 0]
+         ]
 
-def add_queen(new_row, columns, prev_solutions):
-    return [solution + [new_column]
-            for solution in prev_solutions
-            for new_column in range(columns)
-            if no_conflict(new_row, new_column, solution)]
-
-def queensproblem(rows, columns):
-    outcomes = []
-    for x in range(rows):
-        outcomes = add_queen(x, columns, solutions)
-    return solutions
-
-def no_conflict(new_row, new_column, solution):
-    return all(solution[row] != new_column and
-               solution[row] + row != new_column + new_row and
-               solution[row] - row != new_column - new_row
-               for row in range(new_row))
+# Create a function to check if the row and column is safe
 
 
-for solution in queensproblem(8, 8):
-    print(solution)
+def isSafe(row, col, place):
+    # Check that the row is safe
+    for i in range(0, 8):
+        if place[row][i] == 1:
+            print("Unsafe")
+
+    # Check that the column is safe
+    for l in range(0, 8):
+        if place[l][col] == 1:
+            print("Unsafe")
+
+    # Check that the diagonals are safe
+
+def solver(current_col, place):
+
+    # Counts the amount of queens
+    Counter = 0
+
+    # Adding first queen
+    # Ensuring we start at 0, 0
+    current_col = 0
+
+    # First queen being added
+    for i in range(0, 8):
+        place[i][current_col] = "Q"
+        isSafe(i, current_col, place)
+        current_col += 1
+
+        # Add restraint for current_col
+        if current_col > 7:
+          print("No more moves")
+
+    print(table)
