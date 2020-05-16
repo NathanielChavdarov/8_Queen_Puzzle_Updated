@@ -23,6 +23,10 @@ def isSafe(row, col, place):
             print("Unsafe")
 
     # Check that the diagonals are safe
+    for z in range(0, 8):
+      if place[row+z][col+z] == 1:
+        print("Unsafe")
+
 
 def solver(current_col, place):
 
@@ -44,3 +48,5 @@ def solver(current_col, place):
           print("No more moves")
 
     print(table)
+
+solver(0, table)
